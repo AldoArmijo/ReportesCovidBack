@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="COVID19Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'COVID19.dbo.QPA_SeleccionBloqueados' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="QPA_SeleccionBloqueados">
+          <Key>
+            <PropertyRef Name="RN" />
+          </Key>
+          <Property Name="RN" Type="bigint" Nullable="false" />
+          <Property Name="PERIODO" Type="nvarchar" MaxLength="6" />
+          <Property Name="Alumno_IDSIU" Type="nvarchar" MaxLength="10" />
+          <Property Name="NRC" Type="int" />
+          <Property Name="CAMPUS" Type="nvarchar" MaxLength="4" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="Alumno_Apellidos" Type="nvarchar" MaxLength="200" />
+          <Property Name="Alumno_Nombres" Type="nvarchar" MaxLength="100" />
+          <Property Name="Alumno_Telefono" Type="nvarchar" MaxLength="30" />
+          <Property Name="Alumno_O365" Type="nvarchar" MaxLength="100" />
+          <Property Name="CveMateria" Type="nvarchar" MaxLength="16" />
+          <Property Name="NombreMateria" Type="nvarchar" MaxLength="255" />
+          <Property Name="Cve_Escuela" Type="nvarchar" MaxLength="3" />
+          <Property Name="ListaCruzada" Type="nvarchar" MaxLength="2" />
+          <Property Name="Docente_IDSIU" Type="nvarchar" MaxLength="10" />
+          <Property Name="Docente_Nombres" Type="nvarchar" MaxLength="100" />
+          <Property Name="Docente_Apellidos" Type="nvarchar" MaxLength="200" />
+          <Property Name="Docente_O365" Type="nvarchar" MaxLength="100" />
+          <Property Name="UltimaVisita" Type="datetime" />
+          <Property Name="FechaRegreso" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="COVID19ModelStoreContainer">
+          <EntitySet Name="QPA_SeleccionBloqueados" EntityType="Self.QPA_SeleccionBloqueados" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [QPA_SeleccionBloqueados].[RN] AS [RN], 
+    [QPA_SeleccionBloqueados].[PERIODO] AS [PERIODO], 
+    [QPA_SeleccionBloqueados].[Alumno_IDSIU] AS [Alumno_IDSIU], 
+    [QPA_SeleccionBloqueados].[NRC] AS [NRC], 
+    [QPA_SeleccionBloqueados].[CAMPUS] AS [CAMPUS], 
+    [QPA_SeleccionBloqueados].[Activo] AS [Activo], 
+    [QPA_SeleccionBloqueados].[Alumno_Apellidos] AS [Alumno_Apellidos], 
+    [QPA_SeleccionBloqueados].[Alumno_Nombres] AS [Alumno_Nombres], 
+    [QPA_SeleccionBloqueados].[Alumno_Telefono] AS [Alumno_Telefono], 
+    [QPA_SeleccionBloqueados].[Alumno_O365] AS [Alumno_O365], 
+    [QPA_SeleccionBloqueados].[CveMateria] AS [CveMateria], 
+    [QPA_SeleccionBloqueados].[NombreMateria] AS [NombreMateria], 
+    [QPA_SeleccionBloqueados].[Cve_Escuela] AS [Cve_Escuela], 
+    [QPA_SeleccionBloqueados].[ListaCruzada] AS [ListaCruzada], 
+    [QPA_SeleccionBloqueados].[Docente_IDSIU] AS [Docente_IDSIU], 
+    [QPA_SeleccionBloqueados].[Docente_Nombres] AS [Docente_Nombres], 
+    [QPA_SeleccionBloqueados].[Docente_Apellidos] AS [Docente_Apellidos], 
+    [QPA_SeleccionBloqueados].[Docente_O365] AS [Docente_O365], 
+    [QPA_SeleccionBloqueados].[UltimaVisita] AS [UltimaVisita], 
+    [QPA_SeleccionBloqueados].[FechaRegreso] AS [FechaRegreso]
+    FROM [dbo].[QPA_SeleccionBloqueados] AS [QPA_SeleccionBloqueados]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="COVID19Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="QPA_SeleccionBloqueados">
+          <Key>
+            <PropertyRef Name="RN" />
+          </Key>
+          <Property Name="RN" Type="Int64" Nullable="false" />
+          <Property Name="PERIODO" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Alumno_IDSIU" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="NRC" Type="Int32" />
+          <Property Name="CAMPUS" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="Alumno_Apellidos" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Alumno_Nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Alumno_Telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Alumno_O365" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CveMateria" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="NombreMateria" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Cve_Escuela" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="ListaCruzada" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Docente_IDSIU" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Docente_Nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Docente_Apellidos" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Docente_O365" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UltimaVisita" Type="DateTime" Precision="3" />
+          <Property Name="FechaRegreso" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="COVID19Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="QPA_SeleccionBloqueados" EntityType="Self.QPA_SeleccionBloqueados" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="COVID19ModelStoreContainer" CdmEntityContainer="COVID19Entities">
+          <EntitySetMapping Name="QPA_SeleccionBloqueados">
+            <EntityTypeMapping TypeName="COVID19Model.QPA_SeleccionBloqueados">
+              <MappingFragment StoreEntitySet="QPA_SeleccionBloqueados">
+                <ScalarProperty Name="RN" ColumnName="RN" />
+                <ScalarProperty Name="PERIODO" ColumnName="PERIODO" />
+                <ScalarProperty Name="Alumno_IDSIU" ColumnName="Alumno_IDSIU" />
+                <ScalarProperty Name="NRC" ColumnName="NRC" />
+                <ScalarProperty Name="CAMPUS" ColumnName="CAMPUS" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Alumno_Apellidos" ColumnName="Alumno_Apellidos" />
+                <ScalarProperty Name="Alumno_Nombres" ColumnName="Alumno_Nombres" />
+                <ScalarProperty Name="Alumno_Telefono" ColumnName="Alumno_Telefono" />
+                <ScalarProperty Name="Alumno_O365" ColumnName="Alumno_O365" />
+                <ScalarProperty Name="CveMateria" ColumnName="CveMateria" />
+                <ScalarProperty Name="NombreMateria" ColumnName="NombreMateria" />
+                <ScalarProperty Name="Cve_Escuela" ColumnName="Cve_Escuela" />
+                <ScalarProperty Name="ListaCruzada" ColumnName="ListaCruzada" />
+                <ScalarProperty Name="Docente_IDSIU" ColumnName="Docente_IDSIU" />
+                <ScalarProperty Name="Docente_Nombres" ColumnName="Docente_Nombres" />
+                <ScalarProperty Name="Docente_Apellidos" ColumnName="Docente_Apellidos" />
+                <ScalarProperty Name="Docente_O365" ColumnName="Docente_O365" />
+                <ScalarProperty Name="UltimaVisita" ColumnName="UltimaVisita" />
+                <ScalarProperty Name="FechaRegreso" ColumnName="FechaRegreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ReportesCovid19Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cat_Roles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rol" Type="nvarchar" MaxLength="25" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="FechaCrea" Type="datetime" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Permisos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSIU" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Rol" Type="bigint" Nullable="false" />
+          <Property Name="Escuela" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="Campus" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="10" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="FechaCrea" Type="datetime" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ReportesCovid19.dbo.QCat_Programas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="QCat_Programas">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Activo" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Clave" Type="nvarchar" MaxLength="15" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Clave_nivel" Type="nvarchar" MaxLength="2" />
+          <Property Name="Clave_escuela" Type="nvarchar" MaxLength="2" />
+          <Property Name="Campus" Type="nvarchar" MaxLength="10" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="10" />
+          <Property Name="FechaRegistro" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="ReportesCovid19ModelStoreContainer">
+          <EntitySet Name="Cat_Roles" EntityType="Self.Cat_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permisos" EntityType="Self.Permisos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QCat_Programas" EntityType="Self.QCat_Programas" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [QCat_Programas].[ID] AS [ID], 
+    [QCat_Programas].[Clave] AS [Clave], 
+    [QCat_Programas].[Descripcion] AS [Descripcion], 
+    [QCat_Programas].[Clave_nivel] AS [Clave_nivel], 
+    [QCat_Programas].[Clave_escuela] AS [Clave_escuela], 
+    [QCat_Programas].[Campus] AS [Campus], 
+    [QCat_Programas].[Activo] AS [Activo], 
+    [QCat_Programas].[Usuario] AS [Usuario], 
+    [QCat_Programas].[FechaRegistro] AS [FechaRegistro]
+    FROM [dbo].[QCat_Programas] AS [QCat_Programas]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ReportesCovid19Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cat_Roles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rol" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="FechaCrea" Type="DateTime" Precision="3" />
+          <Property Name="Usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Permiso">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSIU" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rol" Type="Int64" Nullable="false" />
+          <Property Name="Escuela" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Campus" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="FechaCrea" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="QCat_Programas">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Activo" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Clave" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Clave_nivel" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Clave_escuela" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Campus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="ReportesCovid19" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cat_Roles" EntityType="Self.Cat_Roles" />
+          <EntitySet Name="Permisos" EntityType="Self.Permiso" />
+          <EntitySet Name="QCat_Programas" EntityType="Self.QCat_Programas" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ReportesCovid19ModelStoreContainer" CdmEntityContainer="ReportesCovid19">
+          <EntitySetMapping Name="Cat_Roles">
+            <EntityTypeMapping TypeName="ReportesCovid19Model.Cat_Roles">
+              <MappingFragment StoreEntitySet="Cat_Roles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="FechaCrea" ColumnName="FechaCrea" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permisos">
+            <EntityTypeMapping TypeName="ReportesCovid19Model.Permiso">
+              <MappingFragment StoreEntitySet="Permisos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDSIU" ColumnName="IDSIU" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="Escuela" ColumnName="Escuela" />
+                <ScalarProperty Name="Campus" ColumnName="Campus" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="FechaCrea" ColumnName="FechaCrea" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QCat_Programas">
+            <EntityTypeMapping TypeName="ReportesCovid19Model.QCat_Programas">
+              <MappingFragment StoreEntitySet="QCat_Programas">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Clave_nivel" ColumnName="Clave_nivel" />
+                <ScalarProperty Name="Clave_escuela" ColumnName="Clave_escuela" />
+                <ScalarProperty Name="Campus" ColumnName="Campus" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
